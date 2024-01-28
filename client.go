@@ -147,6 +147,7 @@ func (c *Client) callAPI(ctx context.Context, r *request, opts ...RequestOption)
 			return []byte{}, err
 		}
 	}
+	fmt.Printf("%s %s %s\n", r.method, r.endpoint, r.fullURL)
 	req, err := http.NewRequest(r.method, r.fullURL, r.body)
 	if err != nil {
 		return []byte{}, err
