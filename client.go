@@ -14,8 +14,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/cnnbcza/binance-connector-go/handlers"
 	"github.com/bitly/go-simplejson"
+	"github.com/cnnbcza/binance-connector-go/handlers"
 )
 
 // TimeInForceType define time in force type of order
@@ -174,9 +174,12 @@ func (c *Client) callAPI(ctx context.Context, r *request, opts ...RequestOption)
 			err = cerr
 		}
 	}()
-	c.debug("response: %#v", res)
-	c.debug("response body: %s", string(data))
-	c.debug("response status code: %d", res.StatusCode)
+	fmt.Printf("response: %#v", res)
+	fmt.Printf("response body: %s", string(data))
+	fmt.Printf("response status code: %d", res.StatusCode)
+	//c.debug("response: %#v", res)
+	//c.debug("response body: %s", string(data))
+	//c.debug("response status code: %d", res.StatusCode)
 
 	if res.StatusCode >= http.StatusBadRequest {
 		apiErr := new(handlers.APIError)
